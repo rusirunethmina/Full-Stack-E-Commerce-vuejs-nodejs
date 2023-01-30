@@ -3,10 +3,15 @@ import VueRouter from "vue-router";
 import CartPage from "../views/CartPage.vue";
 import ProductDetailsPage from "../views/ProductDetailsPage.vue";
 import ProductPage from "../views/ProductPage.vue";
+import NotFoundPage from "../views/NotFoundPage.vue";
 
 Vue.use(VueRouter);
 
 const routes = [
+  {
+    path: "/",
+    redirect: "/products",
+  },
   {
     path: "/products",
     name: "ProductPage",
@@ -23,8 +28,8 @@ const routes = [
     component: CartPage,
   },
   {
-    path: "/",
-    redirect: "/products",
+    path: "*",
+    component: NotFoundPage,
   },
 ];
 
