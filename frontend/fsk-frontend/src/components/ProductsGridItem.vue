@@ -1,34 +1,23 @@
 <template>
-  <div id="page-wrap">
-    <ProductsGrid :products="products" />
-  </div>
+    <div class="product-item">
+        <img v-bind:src="product.imageUrl" />
+        <h3 class="product-name">{{ product.name }}</h3>
+        <p class="product-price">${{ product.price }}</p>
+        <router-link v-bind:to="'/products/' + product.id">
+            <button>View Details</button>
+        </router-link>
+    </div>
 </template>
 
 <script>
-import { products } from "../fake-data";
-import ProductsGrid from '../components/ProductsGrid.vue';
 export default {
-  name: "ProductPage",
-   components: {
-      ProductsGrid,
-    },
-  data() {
-    return {
-      products,
-    };
-  },
-};
+    name: 'ProductsGridItem',
+    props: ['product'],
+}
 </script>
 
 <style scoped>
-  .grid-wrap {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    margin-top: 16px;
-  }
-
-  .product-item {
+.product-item {
     align-items: center;
     border-radius: 8px;
     box-shadow: 0px 2px 5px #888;
